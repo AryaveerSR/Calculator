@@ -19,31 +19,32 @@ class TileButton extends StatelessWidget {
     return RawMaterialButton(
       onPressed: onClick,
       fillColor: {
-        ButtonTier.regular: Colors.white,
-        ButtonTier.highlighted: Colors.white,
-        ButtonTier.operator: Colors.grey.shade100,
-        ButtonTier.equal: Colors.blue,
+        ButtonTier.regular: Colors.transparent,
+        ButtonTier.highlighted: Colors.transparent,
+        ButtonTier.operator: Theme.of(context).colorScheme.surface,
+        ButtonTier.equal: Theme.of(context).colorScheme.primary,
       }[tier],
       highlightColor: {
-        ButtonTier.regular: Colors.grey.shade100,
-        ButtonTier.highlighted: Colors.grey.shade100,
-        ButtonTier.operator: Colors.grey.shade200,
-        ButtonTier.equal: Colors.blue.shade300,
+        ButtonTier.regular: Theme.of(context).colorScheme.surface,
+        ButtonTier.highlighted: Theme.of(context).colorScheme.surface,
+        ButtonTier.operator: Theme.of(context).colorScheme.primary,
+        ButtonTier.equal: Theme.of(context).colorScheme.onPrimary,
       }[tier],
       elevation: 0,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(99999),
-          side: const BorderSide(color: Colors.white)),
+          borderRadius: BorderRadius.circular(99999), side: BorderSide.none),
       child: ClipRRect(
         child: Center(
           child: Text(
             buttonText,
             style: TextStyle(
               color: {
-                ButtonTier.highlighted: Colors.blue.shade600,
-                ButtonTier.regular: Colors.black,
-                ButtonTier.operator: Colors.black,
-                ButtonTier.equal: Colors.white
+                ButtonTier.highlighted: Theme.of(context).colorScheme.primary,
+                ButtonTier.regular:
+                    Theme.of(context).textTheme.bodyLarge!.color,
+                ButtonTier.operator:
+                    Theme.of(context).textTheme.bodyLarge!.color,
+                ButtonTier.equal: Theme.of(context).colorScheme.onPrimary
               }[tier],
               fontSize: 20,
             ),

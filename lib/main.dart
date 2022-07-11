@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'services/theme/theme.model.dart';
 import 'screens/calculator.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomePage());
+    return ChangeNotifierProvider(
+      create: (_) => ThemeModel(),
+      child: Consumer<ThemeModel>(
+          builder: (context, themeNotifier, child) => MaterialApp(
+                title: 'Calculator',
+                debugShowCheckedModeBanner: false,
+                theme:
+                    themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
+                home: const Calculator(),
+              )),
+    );
   }
 }
