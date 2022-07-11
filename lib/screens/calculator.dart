@@ -21,7 +21,7 @@ class _CalculatorState extends State<Calculator> {
     return Consumer<ThemeModel>(
         builder: (context, ThemeModel themeNotifier, child) {
       return Scaffold(
-        backgroundColor: Theme.of(context).dialogBackgroundColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -60,30 +60,34 @@ class _CalculatorState extends State<Calculator> {
                       onClick: () {
                         final btn = buttons[index];
                         if (btn == "C") {
-                          setState(() {
-                            userInput = '';
-                            answer = '';
-                            answer = calcEqual(
-                                userInput: userInput, prevAnswer: answer);
-                          });
+                          if (userInput.isNotEmpty) {
+                            setState(() {
+                              userInput = '';
+                              answer = '';
+                            });
+                          }
                         } else if (btn == "DEL") {
-                          setState(() {
-                            userInput =
-                                userInput.substring(0, userInput.length - 1);
-                            answer = calcEqual(
-                                userInput: userInput, prevAnswer: answer);
-                          });
+                          if (userInput.isNotEmpty) {
+                            setState(() {
+                              userInput =
+                                  userInput.substring(0, userInput.length - 1);
+                              answer = calcEqual(
+                                  userInput: userInput, prevAnswer: answer);
+                            });
+                          }
                         } else if (btn == "=") {
                           setState(() {
                             userInput = answer.isEmpty ? userInput : answer;
                             answer = '';
                           });
                         } else if (btn == "+/-") {
-                          setState(() {
-                            userInput = toggleNegative(userInput);
-                            answer = calcEqual(
-                                userInput: userInput, prevAnswer: answer);
-                          });
+                          if (userInput.isNotEmpty) {
+                            setState(() {
+                              userInput = toggleNegative(userInput);
+                              answer = calcEqual(
+                                  userInput: userInput, prevAnswer: answer);
+                            });
+                          }
                         } else {
                           setState(() {
                             userInput += btn;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'services/theme/theme.model.dart';
+import 'services/theme/theme.data.dart' as themes;
 import 'screens/calculator.dart';
 
 void main() {
@@ -19,8 +20,7 @@ class App extends StatelessWidget {
           builder: (context, themeNotifier, child) => MaterialApp(
                 title: 'Calculator',
                 debugShowCheckedModeBanner: false,
-                theme:
-                    themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
+                theme: themeNotifier.isDark ? themes.dark : themes.light,
                 home: const Calculator(),
               )),
     );

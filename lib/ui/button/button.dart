@@ -22,13 +22,13 @@ class TileButton extends StatelessWidget {
         ButtonTier.regular: Colors.transparent,
         ButtonTier.highlighted: Colors.transparent,
         ButtonTier.operator: Theme.of(context).colorScheme.surface,
-        ButtonTier.equal: Theme.of(context).colorScheme.primary,
+        ButtonTier.equal: Theme.of(context).primaryColor
       }[tier],
       highlightColor: {
         ButtonTier.regular: Theme.of(context).colorScheme.surface,
         ButtonTier.highlighted: Theme.of(context).colorScheme.surface,
         ButtonTier.operator: Theme.of(context).colorScheme.primary,
-        ButtonTier.equal: Theme.of(context).colorScheme.onPrimary,
+        ButtonTier.equal: Theme.of(context).primaryColorLight,
       }[tier],
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -39,12 +39,12 @@ class TileButton extends StatelessWidget {
             buttonText,
             style: TextStyle(
               color: {
-                ButtonTier.highlighted: Theme.of(context).colorScheme.primary,
+                ButtonTier.highlighted: Theme.of(context).primaryColor,
                 ButtonTier.regular:
                     Theme.of(context).textTheme.bodyLarge!.color,
                 ButtonTier.operator:
                     Theme.of(context).textTheme.bodyLarge!.color,
-                ButtonTier.equal: Theme.of(context).colorScheme.onPrimary
+                ButtonTier.equal: Theme.of(context).scaffoldBackgroundColor,
               }[tier],
               fontSize: 20,
             ),
