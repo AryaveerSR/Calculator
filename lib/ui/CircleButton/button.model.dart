@@ -1,4 +1,4 @@
-enum ButtonTier { equal, regular, highlighted, operator }
+enum ButtonTier { equal, regular, highlighted, operator, danger }
 
 final List<String> buttons = [
   'C',
@@ -25,9 +25,11 @@ final List<String> buttons = [
 
 ButtonTier getTier(int index) {
   final x = buttons[index];
-  if (x == '/' || x == 'x' || x == '-' || x == '+') {
+  if ('/x+-'.contains(x)) {
     return ButtonTier.operator;
-  } else if (x == 'C' || x == 'DEL') {
+  } else if ('DELC'.contains(x)) {
+    return ButtonTier.danger;
+  } else if ("%.+/-".contains(x)) {
     return ButtonTier.highlighted;
   } else if (x == "=") {
     return ButtonTier.equal;

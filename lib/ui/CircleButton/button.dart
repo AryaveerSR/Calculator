@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'button.model.dart';
 export 'button.model.dart';
 
-class TileButton extends StatelessWidget {
+class CircleButton extends StatelessWidget {
   final String buttonText;
   final Function() onClick;
   final ButtonTier tier;
 
-  const TileButton(
+  const CircleButton(
       {Key? key,
       required this.buttonText,
       required this.onClick,
@@ -21,12 +21,14 @@ class TileButton extends StatelessWidget {
       fillColor: {
         ButtonTier.regular: Colors.transparent,
         ButtonTier.highlighted: Colors.transparent,
+        ButtonTier.danger: Colors.transparent,
         ButtonTier.operator: Theme.of(context).colorScheme.surface,
         ButtonTier.equal: Theme.of(context).primaryColor
       }[tier],
       highlightColor: {
         ButtonTier.regular: Theme.of(context).colorScheme.surface,
         ButtonTier.highlighted: Theme.of(context).colorScheme.surface,
+        ButtonTier.danger: Theme.of(context).colorScheme.surface,
         ButtonTier.operator: Theme.of(context).colorScheme.primary,
         ButtonTier.equal: Theme.of(context).primaryColorLight,
       }[tier],
@@ -44,6 +46,7 @@ class TileButton extends StatelessWidget {
                     Theme.of(context).textTheme.bodyLarge!.color,
                 ButtonTier.operator:
                     Theme.of(context).textTheme.bodyLarge!.color,
+                ButtonTier.danger: Theme.of(context).errorColor,
                 ButtonTier.equal: Theme.of(context).scaffoldBackgroundColor,
               }[tier],
               fontSize: 20,

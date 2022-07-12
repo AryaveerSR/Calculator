@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 final light = ThemeData(
   primarySwatch: const MaterialColor(4278797515, {
@@ -14,6 +15,7 @@ final light = ThemeData(
     900: Color(0xff021031)
   }),
   brightness: Brightness.light,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
   primaryColor: const Color(0xff0944cb),
   primaryColorLight: const Color(0xffcedcfd),
   primaryColorDark: const Color(0xff063193),
@@ -24,7 +26,7 @@ final light = ThemeData(
     brightness: Brightness.light,
     primary: Color(0xff0944cb),
     secondary: Color(0xff0b52f4),
-    surface: Color(0xffe2e8f0),
+    surface: Color(0xffcbd5e1),
     background: Color(0xffe2e8f0),
     error: Color(0xffef4444),
     onPrimary: Color(0xffffffff),
@@ -37,16 +39,17 @@ final light = ThemeData(
 
 final dark = ThemeData(
     brightness: Brightness.dark,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     primaryColor: const Color(0xff9dbafb),
     primaryColorLight: const Color(0xffcedcfd),
     primaryColorDark: const Color(0xff6c97f9),
     scaffoldBackgroundColor: const Color(0xff1e293b),
     errorColor: const Color(0xfffca5a5),
     colorScheme: const ColorScheme(
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       primary: Color(0xff9dbafb),
       secondary: Color(0xff6c97f9),
-      surface: Color(0xff6c97f9),
+      surface: Color(0xff0f172a),
       background: Color(0xff1e293b),
       error: Color(0xfffca5a5),
       onPrimary: Color(0xff0f172a),
@@ -55,3 +58,7 @@ final dark = ThemeData(
       onBackground: Color(0xffffffff),
       onError: Color(0xfff1f5f9),
     ));
+
+final lightTheme =
+    AppTheme(id: "light", description: "Light Theme", data: light);
+final darkTheme = AppTheme(id: "dark", description: "Dark Theme", data: dark);

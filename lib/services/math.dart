@@ -1,22 +1,37 @@
-// The thing i ingored in high school
+import 'package:calculator/services/calc.model.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-String calcEqual({required String userInput, required String prevAnswer}) {
+void calcEqual(CalcProvider val) {
+  String input = val.userInput.replaceAll('x', '*');
+  if ("/*+-%.".contains(input.substring(input.length - 1))) {
+    input = input.substring(0, input.length - 1);
+  }
   try {
-    Expression exp = Parser().parse(userInput.replaceAll('x', '*'));
-    return exp.evaluate(EvaluationType.REAL, ContextModel()).toString();
+    Expression exp = Parser().parse(input);
+    final ans = exp.evaluate(EvaluationType.REAL, ContextModel());
+    ans % 1 == 0
+        ? val.answer = (ans as double).toInt().toString()
+        : val.answer = ans.toString();
   } catch (e) {
-    return userInput.isEmpty ? '' : prevAnswer;
+    val.answer = 'Error';
   }
 }
 
-String toggleNegative(String userInput) {
-  final lastGroup = userInput.split(RegExp(r'[+,x,/,%]')).last;
+void toggleNegative(CalcProvider val) {
+  final lastGroup = val.userInput.split(RegExp(r'[+,x,/,%]')).last;
   if (lastGroup.startsWith('-')) {
-    return userInput.replaceFirst(lastGroup, lastGroup.substring(1),
-        userInput.substring(0, userInput.length - lastGroup.length).length);
+    val.userInput = val.userInput.replaceFirst(
+        lastGroup,
+        lastGroup.substring(1),
+        val.userInput
+            .substring(0, val.userInput.length - lastGroup.length)
+            .length);
   } else {
-    return userInput.replaceFirst(lastGroup, '-$lastGroup',
-        userInput.substring(0, userInput.length - lastGroup.length).length);
+    val.userInput = val.userInput.replaceFirst(
+        lastGroup,
+        '-$lastGroup',
+        val.userInput
+            .substring(0, val.userInput.length - lastGroup.length)
+            .length);
   }
 }
