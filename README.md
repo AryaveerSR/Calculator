@@ -1,8 +1,12 @@
-# Calculator
+## Calculator
 
 A Calculator App using Flutter. This is just me learning flutter stuff.
 
-# Screenshots
+### Download
+
+[Android](./download/app.apk)
+
+## Screenshots
 
 ### Light
 
