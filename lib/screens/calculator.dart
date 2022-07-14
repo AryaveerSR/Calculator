@@ -21,7 +21,7 @@ class _CalculatorState extends State<Calculator> {
               appBar: const AppBar(),
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   NumberDisplay(userInput: val.userInput, answer: val.answer),
                   NumberPad(val: val)

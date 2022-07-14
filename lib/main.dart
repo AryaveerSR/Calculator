@@ -18,7 +18,7 @@ class App extends StatelessWidget {
       child: ThemeProvider(
           themes: [themes.lightTheme, themes.darkTheme],
           saveThemesOnChange: true,
-          defaultThemeId: "light",
+          defaultThemeId: "dark",
           loadThemeOnInit: true,
           child: ThemeConsumer(
             child: Builder(

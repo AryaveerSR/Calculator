@@ -1,19 +1,19 @@
 ## Calculator
 
-<img src="./img/icon.png" width="400px" height="400px">
+<img src="./assets/icon.png" width="400px" height="400px">
 
 A Calculator App using Flutter. This is just me learning flutter stuff.
 
 ### Download
 
-[Android](./download/app.apk)
+[Android](./assets/app.apk)
 
 ## Screenshots
 
 ### Light
 
-![Light](./img/light.png)
+![Light](./assets/light.png)
 
 ### Dark
 
-![Dark](./img/dark.png)
+![Dark](./assets/dark.png)
