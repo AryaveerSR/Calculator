@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: ^2.0.15
   theme_provider: ^0.5.0
   feather_icons: ^1.2.0
+  flutter_launcher_icons: ^0.9.3
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "img/icon.png"
 
 # The following section is specific to Flutter packages.
 flutter:

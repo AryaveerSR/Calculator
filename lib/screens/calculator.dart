@@ -18,7 +18,7 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Consumer<CalcProvider>(
         builder: (context, val, child) => Scaffold(
-              appBar: AppBar(),
+              appBar: const AppBar(),
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -6,7 +6,7 @@ import 'services/theme.data.dart' as themes;
 import 'services/calc.model.dart';
 import 'screens/calculator.dart';
 
-void main() => runApp(App());
+void main() => runApp(const App());
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
