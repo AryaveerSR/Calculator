@@ -34,24 +34,22 @@ class CircleButton extends StatelessWidget {
       }[tier],
       elevation: 0,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(99999), side: BorderSide.none),
+          borderRadius: BorderRadius.circular(9999), side: BorderSide.none),
       child: ClipRRect(
         child: Center(
-          child: Text(
-            buttonText,
-            style: TextStyle(
-              color: {
-                ButtonTier.highlighted: Theme.of(context).primaryColor,
-                ButtonTier.regular:
-                    Theme.of(context).textTheme.bodyLarge!.color,
-                ButtonTier.operator:
-                    Theme.of(context).textTheme.bodyLarge!.color,
-                ButtonTier.danger: Theme.of(context).errorColor,
-                ButtonTier.equal: Theme.of(context).scaffoldBackgroundColor,
-              }[tier],
-              fontSize: 20,
-            ),
-          ),
+          child: "+-x%DEL=".contains(buttonText)
+              ? Icon(
+                  getIconFromOperator(buttonText),
+                  size: 20,
+                  color: getColorFromTier(tier, context),
+                )
+              : Text(
+                  buttonText,
+                  style: TextStyle(
+                    color: getColorFromTier(tier, context),
+                    fontSize: 20,
+                  ),
+                ),
         ),
       ),
     );

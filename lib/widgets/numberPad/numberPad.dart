@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../ui/CircleButton/button.dart';
-import '../services/math.dart';
-import '../services/calc.model.dart';
+import './CircleButton/button.dart';
+import '../../services/math.dart';
+import '../../services/calc.model.dart';
 
 class NumberPad extends StatelessWidget {
   CalcProvider val;
@@ -11,7 +11,7 @@ class NumberPad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 2,
+      flex: 3,
       child: GridView.builder(
           itemCount: buttons.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -33,16 +33,17 @@ class NumberPad extends StatelessWidget {
                     calcEqual(val);
                   }
                 } else if (btn == "=") {
+                  final userI = val.userInput;
                   val.userInput =
                       val.answer.isEmpty ? val.userInput : val.answer;
-                  val.answer = '';
+                  val.answer = userI;
                 } else if (btn == "+/-") {
                   if (val.userInput.isNotEmpty) {
                     toggleNegative(val);
                     calcEqual(val);
                   }
                 } else {
-                  if ("/x+-%.".contains(btn) &&
+                  if ("/x+%.".contains(btn) &&
                       "/x+-%.".contains(
                           val.userInput.substring(val.userInput.length - 1))) {
                     return;

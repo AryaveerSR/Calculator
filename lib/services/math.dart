@@ -8,13 +8,19 @@ void calcEqual(CalcProvider val) {
   }
   try {
     Expression exp = Parser().parse(input);
-    final ans = exp.evaluate(EvaluationType.REAL, ContextModel());
-    ans % 1 == 0
-        ? val.answer = (ans as double).toInt().toString()
-        : val.answer = ans.toString();
+    val.answer =
+        _formatAnswer(exp.evaluate(EvaluationType.REAL, ContextModel()));
   } catch (e) {
     val.answer = 'Error';
   }
+}
+
+String _formatAnswer(double ans) {
+  return ans % 1 == 0
+      ? (ans).toInt().toString().replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')
+      : ans.toString().replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
 }
 
 void toggleNegative(CalcProvider val) {
